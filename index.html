@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PopHome</title>
+<style>
+:root{--bg:#10131c;--panel:#191e2b;--muted:#a9b2c5;--white:#f5f7fb;--accent:#6c7cff;--accent2:#39c7b5}
+*{box-sizing:border-box}html,body{margin:0;height:100%;background:var(--bg);color:var(--white);font-family:Inter,Segoe UI,Arial,sans-serif}
+body{overflow:hidden;background:radial-gradient(ellipse at 78% 5%,#29345d 0,transparent 36%),linear-gradient(130deg,#11151e,#10131b 60%,#15192b)}
+.app{height:100vh;padding:4vh 5vw;display:flex;flex-direction:column;gap:3vh}
+header{display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:clamp(22px,3vw,36px);font-weight:800;letter-spacing:-1px}.logo span{color:var(--accent2)}
+.topright{display:flex;gap:1.5vw;align-items:center;color:var(--muted);font-size:clamp(13px,1.5vw,18px)}
+.pill{background:#ffffff12;border:1px solid #ffffff16;padding:10px 16px;border-radius:30px}
+.hero{display:flex;align-items:center;min-height:22vh;justify-content:space-between;gap:4vw}
+.herotext{max-width:62%}.eyebrow{color:var(--accent2);text-transform:uppercase;font-size:clamp(12px,1.2vw,16px);letter-spacing:2px;font-weight:700}
+h1{font-size:clamp(32px,5.5vw,66px);margin:10px 0 8px;letter-spacing:-2px}
+.sub{color:var(--muted);font-size:clamp(14px,1.6vw,20px);line-height:1.45}
+.hero-art{width:27vw;height:19vh;min-width:220px;border-radius:24px;background:linear-gradient(135deg,#6475ff,#2bc8bd);position:relative;overflow:hidden;display:grid;place-items:center;box-shadow:0 22px 60px #3544a333}
+.hero-art:before{content:"";position:absolute;width:45%;height:150%;background:#ffffff22;transform:rotate(35deg);left:15%;top:-20%}
+.hero-art b{font-size:clamp(28px,4vw,52px);z-index:1;letter-spacing:-2px}
+nav{display:flex;gap:10px;flex-wrap:wrap}
+.navbtn{border:1px solid #ffffff18;background:#ffffff09;color:var(--muted);border-radius:14px;padding:12px 20px;font-size:clamp(14px,1.4vw,18px);cursor:pointer}
+.navbtn.active,.navbtn:focus{background:#6c7cff;color:white;border-color:#8a96ff;outline:3px solid #6c7cff55}
+section{display:flex;flex-direction:column;gap:14px;min-height:0}
+.sectionhead{display:flex;align-items:center;justify-content:space-between}
+h2{font-size:clamp(18px,2vw,25px);margin:0}
+.cards{display:grid;grid-template-columns:repeat(5,1fr);gap:1.3vw}
+.card{min-height:15vh;border-radius:18px;padding:18px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;background:linear-gradient(145deg,var(--c1),var(--c2));border:2px solid transparent;cursor:pointer;transition:transform .18s,border-color .18s;box-shadow:0 12px 26px #0003}
+.card:before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#0009,transparent 65%)}
+.card:focus,.card.selected{outline:none;border-color:#fff;transform:scale(1.04);box-shadow:0 0 0 4px #ffffff20,0 16px 32px #0005}
+.card .emoji{position:absolute;right:12px;top:8px;font-size:clamp(30px,4vw,54px);filter:drop-shadow(0 4px 4px #0003)}
+.card strong,.card small{z-index:1}.card strong{font-size:clamp(15px,1.7vw,21px)}.card small{margin-top:5px;color:#ffffffc9;font-size:clamp(11px,1.1vw,14px)}
+.bottom{display:flex;justify-content:space-between;color:#7f899e;font-size:12px;margin-top:auto}
+@media(max-width:750px){.app{padding:20px;gap:18px;overflow:auto}.hero{min-height:unset}.hero-art{min-width:130px;width:35vw;height:120px}.cards{grid-template-columns:repeat(2,1fr)}.card{min-height:130px}.herotext{max-width:100%}.bottom{margin-top:15px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header><div class="logo">Pop<span>Home</span></div><div class="topright"><div class="pill">⌕ Recherche</div><div class="pill">⚙</div></div></header>
+<div class="hero">
+<div class="herotext"><div class="eyebrow">Votre espace TV</div><h1>Tout au même endroit.</h1><div class="sub">La télé, vos applis et vos divertissements.<br>Bienvenue à la maison.</div></div>
+<div class="hero-art"><b>POP ✦</b></div>
+</div>
+<nav aria-label="Navigation">
+<button class="navbtn active" data-filter="all">⌂ Accueil</button>
+<button class="navbtn" data-filter="tv">▣ TV</button>
+<button class="navbtn" data-filter="films">▶ Films & séries</button>
+<button class="navbtn" data-filter="apps">▦ Applications</button>
+<button class="navbtn" data-filter="settings">⚙ Paramètres</button>
+</nav>
+<section>
+<div class="sectionhead"><h2 id="sectionTitle">À la une</h2><span class="sub">Utilisez ↑ ↓ ← → et OK</span></div>
+<div class="cards" id="cards">
+<div class="card" tabindex="0" data-cat="tv" style="--c1:#4568d9;--c2:#19264d"><span class="emoji">📺</span><strong>Free TV</strong><small>Regarder la télévision</small></div>
+<div class="card" tabindex="0" data-cat="films" style="--c1:#9a4bb8;--c2:#38224e"><span class="emoji">🎬</span><strong>Films & séries</strong><small>Votre soirée commence ici</small></div>
+<div class="card" tabindex="0" data-cat="apps" style="--c1:#2b9e9b;--c2:#154a55"><span class="emoji">▶️</span><strong>YouTube</strong><small>Vidéos et musique</small></div>
+<div class="card" tabindex="0" data-cat="apps" style="--c1:#d05a65;--c2:#632b43"><span class="emoji">🎵</span><strong>Musique</strong><small>Vos playlists</small></div>
+<div class="card" tabindex="0" data-cat="apps" style="--c1:#d08c40;--c2:#5d3d2b"><span class="emoji">🧩</span><strong>Applications</strong><small>Explorer les applis</small></div>
+</div>
+</section>
+<div class="bottom"><span>PopHome • Prototype</span><span>OK : sélectionner · Échap : accueil</span></div>
+</div>
+<script>
+const buttons=[...document.querySelectorAll('.navbtn')], cards=[...document.querySelectorAll('.card')], title=document.getElementById('sectionTitle');
+const titles={all:'À la une',tv:'Télévision',films:'Films & séries',apps:'Applications',settings:'Paramètres'};
+function filter(cat){buttons.forEach(b=>b.classList.toggle('active',b.dataset.filter===cat));title.textContent=titles[cat]||'À la une';cards.forEach(c=>c.style.display=(cat==='all'||cat==='settings'||c.dataset.cat===cat)?'flex':'none');if(cat==='settings')title.textContent='Paramètres (prototype)';}
+buttons.forEach(b=>b.addEventListener('click',()=>filter(b.dataset.filter)));
+let index=0;function visible(){return cards.filter(c=>c.style.display!=='none')}
+function focusCard(i){const v=visible();if(!v.length)return;index=(i+v.length)%v.length;v.forEach(c=>c.classList.remove('selected'));v[index].classList.add('selected');v[index].focus({preventScroll:true})}
+document.addEventListener('keydown',e=>{if(['ArrowRight','ArrowDown'].includes(e.key)){e.preventDefault();focusCard(index+1)}if(['ArrowLeft','ArrowUp'].includes(e.key)){e.preventDefault();focusCard(index-1)}if(e.key==='Escape'){filter('all');index=0;focusCard(0)}if(e.key==='Enter'){const v=visible()[index];if(v){v.style.transform='scale(1.06)';setTimeout(()=>v.style.transform='',180)}}});
+cards.forEach((c,i)=>c.addEventListener('click',()=>focusCard(i)));
+</script>
+</body>
+</html>
